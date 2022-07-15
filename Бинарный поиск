@@ -1,0 +1,22 @@
+# Рекурсивной реализации бинарного поиска
+def binary_search_recursive(array, element, start, end): 
+  # Выходим из рекурсии, если start элемент выше end
+  if start > end: 
+    return -1 
+  #находим средний элемент, если искомый элемент равен середине,
+  #то выводим его
+  mid = (start + end) // 2 
+  if element == array[mid]: 
+   return mid 
+  #Если нет, мы проверяем, больше ли элемент или меньше среднего
+  if element < array[mid]: 
+   # Поиск в левой половине
+   return binary_search_recursive(array, element, start, mid-1) 
+  else: 
+    # Поиск в правой половине
+    return binary_search_recursive(array, element, mid+1, end)
+element = 5 
+array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21] 
+ 
+print("Searching for {}".format(element)) 
+print("Index of {}: {}".format(element, binary_search_recursive(array, element, 0, len(array))))
